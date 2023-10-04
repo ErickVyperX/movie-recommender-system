@@ -7,15 +7,15 @@ import org.springframework.stereotype.Component;
 public class RecommenderImplementation {
 
     @Autowired
-    private Filter filter;
+    private Filter collaborativeFilter; //Matching ObjectName with BeanName, but ContentBasedFilter is @Primary
 
-    public RecommenderImplementation(Filter filter) {
+    public RecommenderImplementation(Filter collaborativeFilter) {
         super();
-        this.filter = filter;
+        this.collaborativeFilter = collaborativeFilter;
     }
 
     public String[] recommendMovies(String movie) {
-        System.out.println("Filter Name: " + filter.getClass().getSimpleName());
-        return filter.getRecommendations(movie);
+        System.out.println("Filter Name: " + collaborativeFilter.getClass().getSimpleName());
+        return collaborativeFilter.getRecommendations(movie);
     }
 }
