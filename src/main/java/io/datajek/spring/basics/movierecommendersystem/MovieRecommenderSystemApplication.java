@@ -12,23 +12,20 @@ public class MovieRecommenderSystemApplication {
     public static void main(String[] args) {
         ApplicationContext applicationContext = SpringApplication.run(MovieRecommenderSystemApplication.class, args);
 
-        //SINGLETON SCOPE
-        CollaborativeFilter collaborativeFilter1 = applicationContext.getBean(CollaborativeFilter.class);
-        CollaborativeFilter collaborativeFilter2 = applicationContext.getBean(CollaborativeFilter.class);
-        CollaborativeFilter collaborativeFilter3 = applicationContext.getBean(CollaborativeFilter.class);
+        ContentBasedFilter cbf1 = applicationContext.getBean(ContentBasedFilter.class);
+        System.out.println("ContentBasedFilter with Singleton scope \n " + cbf1);
 
-        System.out.println(collaborativeFilter1);
-        System.out.println(collaborativeFilter2);
-        System.out.println(collaborativeFilter3);
-        
-        //PROTOTYPE SCOPE
-        ContentBasedFilter contentBasedFilter1 = applicationContext.getBean(ContentBasedFilter.class);
-        ContentBasedFilter contentBasedFilter2 = applicationContext.getBean(ContentBasedFilter.class);
-        ContentBasedFilter contentBasedFilter3 = applicationContext.getBean(ContentBasedFilter.class);
+        Movie movie1 = cbf1.getMovie();
+        Movie movie2 = cbf1.getMovie();
+        Movie movie3 = cbf1.getMovie();
 
-        System.out.println(contentBasedFilter1);
-        System.out.println(contentBasedFilter2);
-        System.out.println(contentBasedFilter3);
+        System.out.println("Movie with Prototype scope");
+        System.out.println(movie1);
+        System.out.println(movie2);
+        System.out.println(movie3);
+
+        System.out.println(ContentBasedFilter.getInstances());
+        System.out.println(Movie.getInstances());
 
     }
 }
