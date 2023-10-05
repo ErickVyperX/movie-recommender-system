@@ -1,24 +1,21 @@
 package io.datajek.spring.basics.movierecommendersystem;
 
-import io.datajek.spring.basics.movierecommendersystem.otherpackage.Movie;
 import io.datajek.spring.basics.movierecommendersystem.otherpackage.RecommenderImplementation;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
-@ComponentScan(basePackages = "io.datajek.spring.basics.movierecommendersystem.lesson3")
-@ComponentScan(includeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "io.datajek.spring.basics.movierecommendersystem.otherpackage"))
+import java.util.Arrays;
+
+@Configuration
+@ComponentScan
 public class MovieRecommenderSystemApplication {
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = SpringApplication.run(MovieRecommenderSystemApplication.class, args);
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MovieRecommenderSystemApplication.class);
 
         RecommenderImplementation recommender = applicationContext.getBean(RecommenderImplementation.class);
-        System.out.println(recommender.getFilter());
-
-
+        System.out.println(Arrays.toString(recommender.recommendMovies("Finding Dory")));
+        applicationContext.close();
     }
 }
