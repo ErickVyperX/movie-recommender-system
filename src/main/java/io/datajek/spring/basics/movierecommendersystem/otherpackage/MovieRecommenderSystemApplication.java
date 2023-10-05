@@ -15,10 +15,15 @@ public class MovieRecommenderSystemApplication {
     public static void main(String[] args) {
         ApplicationContext applicationContext = SpringApplication.run(MovieRecommenderSystemApplication.class, args);
 
-        System.out.println("ContentBasedFilter bean found: " + applicationContext.containsBean("contentBasedFilter"));
-        System.out.println("CollaborativeFilter bean found: " + applicationContext.containsBean("collaborativeFilter"));
+        RecommenderImplementation recommender = applicationContext.getBean(RecommenderImplementation.class);
+        System.out.println(recommender);
 
+        //Retrieving prototype bean from application context twice
+        Movie m1 = applicationContext.getBean(Movie.class);
+        System.out.println(m1);
 
+        Movie m2 = applicationContext.getBean(Movie.class);
+        System.out.println(m2);
 
     }
 }
