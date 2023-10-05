@@ -1,7 +1,7 @@
-package io.datajek.spring.basics.movierecommendersystem.lesson3;
+package io.datajek.spring.basics.movierecommendersystem.otherpackage;
 
-import io.datajek.spring.basics.movierecommendersystem.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Lookup;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +15,7 @@ public class ContentBasedFilter implements Filter {
         System.out.println("ContentBasedFilter created!");
     }
 
+    @Lookup
     public Movie getMovie() {
         return movie;
     }
