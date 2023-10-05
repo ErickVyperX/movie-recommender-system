@@ -4,11 +4,13 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Lookup;
-import org.springframework.stereotype.Component;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Qualifier;
 
-@Component
+import javax.inject.Named;
+
+@Named @Qualifier("CBF")
 public class ContentBasedFilter implements Filter {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 

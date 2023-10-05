@@ -4,18 +4,24 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Qualifier;
 
-@Component
+import javax.inject.Inject;
+import javax.inject.Named;
+
+@Named
 public class RecommenderImplementation {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     private Filter filter;
-    @Autowired
+    @Inject @Qualifier("CF")
     public void setFilter(Filter filter) {
         logger.info("In RecommenderImplementation setter method..dependency injection");
         this.filter = filter;
+    }
+
+    public Filter getFilter() {
+        return filter;
     }
 
     @PostConstruct
