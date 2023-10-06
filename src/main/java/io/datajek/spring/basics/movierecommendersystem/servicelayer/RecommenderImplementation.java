@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class RecommenderImplementation {
     private Filter filter;
 
-    @Value("${recommender.implementation.favoriteMovie:Finding Dory}")
+    @Value("${recommender.implementation.favoriteMovie}")
     private String favoriteMovie;
 
     @Autowired
