@@ -1,4 +1,4 @@
-package io.datajek.spring.basics.movierecommendersystem.otherpackage;
+package io.datajek.spring.basics.movierecommendersystem.servicelayer;
 
 public interface Filter {
     String[] getRecommendations(String movie);

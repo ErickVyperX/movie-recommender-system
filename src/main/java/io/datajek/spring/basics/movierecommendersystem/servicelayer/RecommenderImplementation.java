@@ -1,10 +1,11 @@
-package io.datajek.spring.basics.movierecommendersystem.otherpackage;
+package io.datajek.spring.basics.movierecommendersystem.servicelayer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RecommenderImplementation {
-
     private Filter filter;
 
     @Autowired
@@ -15,14 +16,6 @@ public class RecommenderImplementation {
 
     public Filter getFilter() {
         return filter;
-    }
-
-    public void postConstruct() {
-        //initialization code goes here
-    }
-
-    public void preDestroy() {
-        //cleanup code
     }
 
     public String[] recommendMovies(String movie) {

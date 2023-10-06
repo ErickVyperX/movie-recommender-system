@@ -1,34 +1,22 @@
-package io.datajek.spring.basics.movierecommendersystem.otherpackage;
+package io.datajek.spring.basics.movierecommendersystem.servicelayer;
 
+import io.datajek.spring.basics.movierecommendersystem.repositorylayer.Movie;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 @Qualifier("contentBasedFilter")
 public class ContentBasedFilter implements Filter {
 
-    private static int instances = 0;
-
+    @Autowired
     private Movie movie;
     public ContentBasedFilter() {
-        instances++;
         System.out.println("ContentBasedFilter created!");
-    }
-
-    public void postConstruct() {
-        //initialization code goes here
-    }
-
-    private void preDestroy() {
-        //clear movies from cache
     }
 
     public Movie getMovie() {
         return movie;
-    }
-
-    public static int getInstances() {
-        return instances;
     }
 
     public String[] getRecommendations(String movie) {

@@ -7,9 +7,5 @@
                      http://www.springframework.org/schema/context
                      http://www.springframework.org/schema/context/spring-context.xsd">
     <!--Identify all the beans automatically-->
-    <context:component-scan base-package="io.datajek.spring.basics.movierecommendersystem.otherpackage"/>
-
-    <!--Identify a bean manually-->
-    <bean id="recommenderImpl" class="io.datajek.spring.basics.movierecommendersystem.otherpackage.RecommenderImplementation">
-    </bean>
+    <context:component-scan base-package="io.datajek.spring.basics.movierecommendersystem"/>
 </beans>

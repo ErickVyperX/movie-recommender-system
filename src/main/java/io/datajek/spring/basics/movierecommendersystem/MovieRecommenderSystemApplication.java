@@ -1,6 +1,6 @@
 package io.datajek.spring.basics.movierecommendersystem;
 
-import io.datajek.spring.basics.movierecommendersystem.otherpackage.RecommenderImplementation;
+import io.datajek.spring.basics.movierecommendersystem.servicelayer.RecommenderImplementation;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
@@ -14,8 +14,11 @@ public class MovieRecommenderSystemApplication {
         System.out.println(Arrays.toString(applicationContext.getBeanDefinitionNames()));
 
         //retrieve bean from the application context
-        System.out.println(applicationContext.getBean("recommenderImpl", RecommenderImplementation.class));
+        System.out.println(applicationContext.getBean(RecommenderImplementation.class));
 
-        System.out.println(applicationContext.getBean(RecommenderImplementation.class).getFilter());
+        //Verify Autowiring
+        RecommenderImplementation recommender = applicationContext.getBean(RecommenderImplementation.class);
+        System.out.println(recommender.getFilter());
+        System.out.println(Arrays.toString(recommender.recommendMovies("Finding Dory")));
     }
 }
