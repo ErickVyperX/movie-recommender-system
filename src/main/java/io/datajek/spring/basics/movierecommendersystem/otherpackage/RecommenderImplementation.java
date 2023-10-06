@@ -1,15 +1,13 @@
 package io.datajek.spring.basics.movierecommendersystem.otherpackage;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-
-import javax.inject.Inject;
-import javax.inject.Named;
-
-@Named
 public class RecommenderImplementation {
 
     private Filter filter;
-    @Inject @Qualifier("CBF")
+
+    public RecommenderImplementation(Filter filter) {
+        this.filter = filter;
+    }
+
     public void setFilter(Filter filter) {
         this.filter = filter;
     }

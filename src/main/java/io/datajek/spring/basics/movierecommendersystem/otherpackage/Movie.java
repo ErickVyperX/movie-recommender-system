@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import javax.inject.Named;
 
-@Named
-@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Movie {
     private static final int instances = 0;
     private int id;

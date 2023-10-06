@@ -1,21 +1,24 @@
 package io.datajek.spring.basics.movierecommendersystem;
 
-import io.datajek.spring.basics.movierecommendersystem.otherpackage.RecommenderImplementation;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import io.datajek.spring.basics.movierecommendersystem.otherpackage.CollaborativeFilter;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
 
-@Configuration
-@ComponentScan
 public class MovieRecommenderSystemApplication {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MovieRecommenderSystemApplication.class);
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("appContext.xml");
 
-        RecommenderImplementation recommender = applicationContext.getBean(RecommenderImplementation.class);
-        System.out.println(Arrays.toString(recommender.recommendMovies("Finding Dory")));
+        //check the beans which have been loaded
+        System.out.println("Beans loaded...");
+        System.out.println(Arrays.toString(applicationContext.getBeanDefinitionNames()));
+
+        //retrieve bean from the application context
+        System.out.println(applicationContext.getBean("collaborativeFilter", CollaborativeFilter.class));
+
+        ////call method to get recommendations and verify autowiring
+        System.out.println(Arrays.toString(applicationContext.getBean(CollaborativeFilter.class).getRecommendations("Finding Dory")));
         applicationContext.close();
     }
 }

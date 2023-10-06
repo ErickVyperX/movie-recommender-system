@@ -1,18 +1,8 @@
 package io.datajek.spring.basics.movierecommendersystem.otherpackage;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Lookup;
-
-import org.springframework.beans.factory.annotation.Qualifier;
-
-import javax.inject.Named;
-
-@Named @Qualifier("CBF")
 public class ContentBasedFilter implements Filter {
     private static int instances = 0;
 
-    @Autowired
     private Movie movie;
     public ContentBasedFilter() {
         instances++;
@@ -27,7 +17,6 @@ public class ContentBasedFilter implements Filter {
         //clear movies from cache
     }
 
-    @Lookup
     public Movie getMovie() {
         return movie;
     }
